@@ -27,6 +27,11 @@ public class CustomersEntity {
         this.orders = orders;
     }
 
+    public CustomersEntity(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public CustomersEntity(int id, String name, String email) {
         this.id = id;
         this.name = name;
