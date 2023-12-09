@@ -32,4 +32,10 @@ public class CustomerController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCustomerById(@PathVariable("id") int id) {
+        CustomersEntity customersEntity = customersRepository.findById(id);
+        return new ResponseEntity<>(customersEntity, HttpStatus.OK);
+    }
 }
