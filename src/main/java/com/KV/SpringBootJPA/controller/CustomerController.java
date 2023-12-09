@@ -36,6 +36,9 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getCustomerById(@PathVariable("id") int id) {
         CustomersEntity customersEntity = customersRepository.findById(id);
+        if (customersEntity == null) {
+            return new ResponseEntity<>("Không tìm thấy customer", HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(customersEntity, HttpStatus.OK);
     }
 }
