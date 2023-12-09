@@ -1,4 +1,4 @@
-package com.KV.SpringBootJPA.security;
+package com.KV.SpringBootJPA.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
