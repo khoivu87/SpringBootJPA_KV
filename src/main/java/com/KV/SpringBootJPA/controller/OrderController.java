@@ -5,9 +5,8 @@ import com.KV.SpringBootJPA.repository.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,19 @@ public class OrderController {
          return new ResponseEntity<>(listOrders, HttpStatus.OK);
      }
 
+    @PostMapping("/create")
+    public ResponseEntity<OrdersEntity> createOrder(@Validated @RequestBody OrdersEntity order) {
+        try {
+            OrdersEntity ordersEntity = ordersRepository.save(order);
+            return new ResponseEntity<>(ordersEntity, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<?> getOrderByCustomerId(@PathVariable("id") int id) {
+        List<OrdersEntity> ordersEntity = ordersRepository.findAllByCustomerId(id);
+        return new ResponseEntity<>(ordersEntity, HttpStatus.OK);
+    }
 }
