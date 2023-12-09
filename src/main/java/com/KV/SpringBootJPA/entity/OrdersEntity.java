@@ -25,6 +25,12 @@ public class OrdersEntity {
     public OrdersEntity() {
     }
 
+    public OrdersEntity(String orderCode, Double totalAmount, int customerId) {
+        this.orderCode = orderCode;
+        this.totalAmount = totalAmount;
+        this.customerId = customerId;
+    }
+
     public OrdersEntity(int id, String orderCode, Double totalAmount, int customerId) {
         this.id = id;
         this.orderCode = orderCode;
