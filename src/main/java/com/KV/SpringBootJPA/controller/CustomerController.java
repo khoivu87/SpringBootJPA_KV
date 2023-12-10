@@ -1,7 +1,6 @@
 package com.KV.SpringBootJPA.controller;
 
 import com.KV.SpringBootJPA.entity.CustomersEntity;
-import com.KV.SpringBootJPA.repository.CustomersRepository;
 import com.KV.SpringBootJPA.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
