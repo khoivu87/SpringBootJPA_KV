@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrdersEntity> findAllOrders() {
-        return (List<OrdersEntity>)ordersRepository.findAll();
+        return ordersRepository.findAll();
     }
 
     @Override
@@ -29,6 +29,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrdersEntity> findOrdersByCustomerId(int customerId) {
-        return (List<OrdersEntity>)ordersRepository.findByCustomerId(customerId);
+        return ordersRepository.findByCustomerId(customerId);
     }
 }
