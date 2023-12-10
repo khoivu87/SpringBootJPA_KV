@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -47,7 +47,7 @@ public class OrderController {
     @GetMapping("/customer/{id}")
     public ResponseEntity<?> getOrderByCustomerId(@PathVariable("id") int customerId) {
         List<OrdersEntity> ordersEntity = orderService.findOrdersByCustomerId(customerId);
-        if (ordersEntity == null) {
+        if (ordersEntity == null || ordersEntity.isEmpty()) {
             return new ResponseEntity<>("Không tìm thấy order", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(ordersEntity, HttpStatus.OK);
